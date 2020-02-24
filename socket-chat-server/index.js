@@ -8,6 +8,14 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+io.on('connected', (socket) => {
+    console.log('Connections is noice!');
+    //this allows for real time conn and disconn. 
+    socket.on('Disconnected from reality', ()=> {
+        console.log('Adios partner!');
+    })
+}); 
+
 app.use(router);
 
 
